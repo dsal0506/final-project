@@ -13,7 +13,7 @@ datasource db {
 model Team {
   teamId    String   @id @default(uuid())
   name      String
-  club      String
+  mascot    String
   city      String
   stadium   String
   coach     String

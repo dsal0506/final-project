@@ -2,7 +2,7 @@
 CREATE TABLE "Team" (
     "teamId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "club" TEXT NOT NULL,
+    "mascot" TEXT NOT NULL,
     "city" TEXT NOT NULL,
     "stadium" TEXT NOT NULL,
     "coach" TEXT NOT NULL,
