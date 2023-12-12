@@ -17,6 +17,6 @@ router.get('/', (req, res) => {
 })
 
 
-router.use('/teams', employees)
+router.use('/teams', teams)
 
 export default router
