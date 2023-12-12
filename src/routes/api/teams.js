@@ -1,12 +1,12 @@
 import { Router } from 'express'
 
 import {
-  getEmployee,
-  getEmployees,
-  addEmployee,
-  updateEmployee,
-  deleteEmployee,
-} from '../../models/employees'
+  getTeam,
+  getTeams,
+  addTeam,
+  updateTeam,
+  deleteTeam,
+} from '../../models/teams'
 
 const router = Router()
 
@@ -15,43 +15,43 @@ router.get('/', async (req, res) => {
   const page = Number(req.query.page) || 1
   const skip = size * (page - 1)
   const take = size
-  const { count, employees } = await getEmployees(skip, take)
+  const { count, teams } = await getTeams(skip, take)
   res.set({
     'X-Total-Count': count,
     'X-Total-Pages': Math.ceil(count / size),
   })
-  res.send(employees)
+  res.send(teams)
 })
 
 router.get('/:id', async (req, res) => {
-  const employee = await getEmployee(req.params.id)
-  if (employee) {
-    res.send(employee)
+  const team = await getTeam(req.params.id)
+  if (team) {
+    res.send(team)
   } else {
-    res.status(404).send({ msg: 'Employee not found' })
+    res.status(404).send({ msg: 'Team not found' })
   }
 })
 
 router.post('/', async (req, res) => {
-  const employee = await addEmployee(req.body)
-  res.send(employee)
+  const team = await addTeam(req.body)
+  res.send(team)
 })
 
 router.put('/:id', async (req, res) => {
-  const employee = await updateEmployee(req.params.id, req.body)
-  if (employee) {
-    res.send(employee)
+  const team = await updateTeam(req.params.id, req.body)
+  if (team) {
+    res.send(team)
   } else {
-    res.status(404).send({ msg: 'Employee not found' })
+    res.status(404).send({ msg: 'Team not found' })
   }
 })
 
 router.delete('/:id', async (req, res) => {
-  const employee = await deleteEmployee(req.params.id)
-  if (employee) {
-    res.send(employee)
+  const team = await deleteTeam(req.params.id)
+  if (team) {
+    res.send(team)
   } else {
-    res.status(404).send({ msg: 'Employee not found' })
+    res.status(404).send({ msg: 'Team not found' })
   }
 })
 
