@@ -1,12 +1,24 @@
-// Import necessary modules
-import { Router } from 'express';
-import teamsRouter from './teams';  // Import the router for teams
+import { Router } from 'express'
+import basicAuth from 'express-basic-auth'
 
-// Create an instance of the Express Router
-const router = Router();
 
-// Use the teams router for the '/teams' path
-router.use('/teams', teamsRouter);
+import employees from './teams'
 
-// Export the router
-export default router;
+const router = Router()
+
+router.use(
+  basicAuth({
+    users: { [process.env.ADMIN_USER]: process.env.ADMIN_PASSWORD },
+  }),
+)
+
+router.get('/', (req, res) => {
+  res.send({ msg: 'Inside API Endpoints' })
+})
+
+router.use('/teams', teams)
+
+export default router
+
+
+
