@@ -1,12 +1,12 @@
 import db from '../utils/db'
 
-export const getTeamsList = async (skip, take) => {
+export const getTeams = async (skip, take) => {
   const count = await db.team.count()
-  const Teams = await db.team.findMany({
+  const teams = await db.team.findMany({
     skip,
     take,
   })
-  return { count, Teams }
+  return { count, teams }
 }
 
 export const getTeam = async (id) =>
