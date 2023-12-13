@@ -2,7 +2,7 @@ import { Router } from 'express'
 import basicAuth from 'express-basic-auth'
 
 
-import employees from './teams'
+import teams from './teams'
 
 const router = Router()
 
